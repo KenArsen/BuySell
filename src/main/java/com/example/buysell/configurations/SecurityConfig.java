@@ -23,7 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/product/**", "/images/**", "/registration", "/user/**")
+                        .requestMatchers("/", "/product/**", "/images/**", "/registration", "/user/**", "/static/**")
                         .permitAll()
                         .anyRequest().authenticated()
                 )
@@ -36,11 +36,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    @Bean
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder());
-//    }
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(8);
