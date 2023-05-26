@@ -11,18 +11,21 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <input type="submit" value="Выйти"/>
     </form>
+    <#if user.isAdmin()>
+        <a href="/admin">Панел администратора</a>
+    </#if>
 <#else>
     <a href="/login">Войти</a>
 </#if>
 
-<h4>Товары со всей Кыргызстана</h4>
+<h4>Товары со всей Кыргызстане</h4>
 <form action="/" method="get">
     Поиск по названию объявления: <input type="text" name="title"><br>
     <input type="submit" value="Поиск"/>
 </form>
 <#list products as product>
     <div>
-        <p><b>${product.title}</b> ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a></p>
+        <p><b>${product.title}</b> ${product.price} сом. | <a href="/product/${product.id}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Товаров нет</h3>
